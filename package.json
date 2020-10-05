@@ -1,0 +1,42 @@
+{
+  "name": "shop-management-system",
+  "version": "1.0.0",
+  "description": "backend for shop management system",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donymvarkey/shop-management-system.git"
+  },
+  "keywords": [
+    "shop management",
+    "backend",
+    "node",
+    "mongodb"
+  ],
+  "author": "donymvarkey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/donymvarkey/shop-management-system/issues"
+  },
+  "homepage": "https://github.com/donymvarkey/shop-management-system#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.0",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.7.5",
+    "nodemon": "^1.19.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0"
+  }
+}
