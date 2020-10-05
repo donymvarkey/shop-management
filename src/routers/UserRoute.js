@@ -67,6 +67,7 @@ router.post('/user/login', [
     try {
         const {username, password} = req.body;
         let data = await UserModel.findOne({username: username});
+        
         if (data == null || data == undefined) {
             res.status(404).json({
                 status: false,
@@ -74,9 +75,11 @@ router.post('/user/login', [
             })
         }
         if (bcrypt.compareSync(password, data.password)) {
+            let shopData = await ShopModel.findOne({userId: data._id})
             signiningData = {
                 username: data.username,
-                id: data._id
+                id: data._id,
+                shopId: shopData._id
             }
             token = jwt.sign(signiningData, req.app.get('secret'));
             signiningData['token'] = token;
@@ -84,7 +87,7 @@ router.post('/user/login', [
             res.status(200).json({
                 status: true,
                 msg: 'login success',
-                token: signiningData
+                accessToken: signiningData
             })
         } else {
             res.status(401).json({
