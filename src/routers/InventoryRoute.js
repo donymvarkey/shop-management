@@ -1,7 +1,5 @@
 const express = require('express')
 
-
-const ShopModel = require('../models/ShopModel');
 const InventoryModel = require('../models/InventoryModel');
 const middlewares = require('../middlewares');
 const { body } = require('express-validator/check');
@@ -93,6 +91,30 @@ router.put('/update/product/:productId', [
             res.status(400).json({
                 status: false,
                 msg: 'failed to update product'
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            status: false,
+            msg: `Internal server error: ${error}`
+        })
+    }
+})
+
+router.delete('/delete/product/:productId', middlewares.isAuthorised, async (req, res) => {
+    try {
+        const productId = req.params.productId;
+        let data = await InventoryModel.findOneAndDelete(productId);
+
+        if(data) {
+            res.status(200).json({
+                status: true,
+                msg: 'product deleted successfully'
+            })
+        }else {
+            res.status(400).json({
+                status: false,
+                msg: 'failed to delete product'
             })
         }
     } catch (error) {
