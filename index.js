@@ -7,7 +7,7 @@ const options ={
     secret: process.env.secret,
     port : process.env.PORT,
     mongodb: {
-        uri : process.env.MONGO_URL || "mongodb+srv://admin:9rM8vZCxFDoyCX3n@cluster0.3to02.mongodb.net/shop-mgmt?retryWrites=true&w=majority"
+        uri : process.env.MONGO_URL || "mongodb+srv://admin:cbDFpDGjUcFcw4lO@cluster0.pambb.mongodb.net/shop-inventory?retryWrites=true&w=majority"
     },
 }
 
