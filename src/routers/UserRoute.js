@@ -13,15 +13,14 @@ let router = express.Router();
 
 router.post('/shop/register', [
     body('ownerName').exists(),
-    body('ownerAddress').exists(),
     body('shopName').exists(),
-    body('shopAddress').exists(),
+    body('shopLocation').exists(),
     body('contact').exists(),
     body('username').exists(),
     body('password').exists()
 ], async (req, res) => {
     try {
-        const {ownerName, ownerAddress, shopName, shopAddress, contact, username, password} = req.body;
+        const {ownerName, shopName, shopLocation, contact, username, password} = req.body;
         
         let hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
@@ -34,9 +33,8 @@ router.post('/shop/register', [
 
         let shop = new ShopModel({
             ownerName: ownerName,
-            ownerAddress: ownerAddress,
             shopName: shopName,
-            shopAddress: shopAddress,
+            shopAddress: shopLocation,
             contact: contact,
             userId: data._id
         })

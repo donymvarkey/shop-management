@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const UserRouter = require('./routers/UserRoute');
+const InventoryRouter = require('./routers/InventoryRoute');
 
 const cors = require('cors');
 
@@ -52,6 +53,7 @@ class SwapiServer{
     async mountRoutes(){
 
         this.api.use(UserRouter);
+        this.api.use(InventoryRouter)
         return true;
     }
     /**
